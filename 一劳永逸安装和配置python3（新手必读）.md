@@ -16,7 +16,7 @@
 
 # 前言
 
-回忆我当初python零基础入门的时候，最讨厌做的事情就是搭建各种开发环境、配置各种开发工具和IDE，切换各种python版本和解释器。虽然现在看来这些东西都很简单（就是本文所讲内容），但是对新手来说，遇到任何一个小bug都会让他浪费大量时间精力去解决，甚至直接劝退弃学。于是我就想做一个教程，一站式解决python的所有安装配置和开发工具问题，之后就可以专注于享受编程本身，享受python庞大的开源社区和计算生态。
+回忆我当初python零基础入门的时候，最讨厌做的事情就是搭建各种开发环境、配置各种环境变量、开发工具和IDE，切换各种python版本和解释器。虽然现在看来这些东西都很简单（就是本文所讲内容），但是对新手来说，遇到任何一个小bug都会让他浪费大量时间精力去解决，甚至直接劝退弃学。我之前见到一个同学，学了半年python，连交互式界面和脚本编辑界面都搞不清楚。于是我就想做一个教程，一站式解决python的所有安装配置和开发工具问题，之后就可以专注于享受编程本身，享受python庞大的开源社区和计算生态。
 
 本文是很多程序员多年的经验炼出的真金，只需按照步骤一步步来就行。
 
@@ -24,9 +24,7 @@
 
 # 1、安装python3（3.7.2最新版本）
 
-## 下载
-
-### 下载方式一：百度网盘链接（推荐）
+## 下载方式一：百度网盘链接（推荐）
 
 链接：https://pan.baidu.com/s/1NBLve375kK6bEvkcdtGEFA   
 
@@ -34,7 +32,7 @@
 
 选择自己电脑对应的操作系统下载即可。
 
-### 下载方式二：python官网下载
+## 下载方式二：python官网下载
 
 > 最好用迅雷下载，否则速度会很慢
 
@@ -277,7 +275,7 @@ python为什么这么火？
 
 > `pip list`命令：显示目前pip已经安装好的第三方模块。
 
-## pip install命令下载第三方模块
+## pip install命令下载第三方模块`numpy`
 
 用`pip install+模块名字`命令来安装第三方模块
 
@@ -336,8 +334,51 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 > 注意，`simple` 不能少, 是 `https` 而不是 `http
+>
+> 
 
-安装中文分词第三方模块`jieba`
+## 测试几个第三方模块
+
+### 数据可视化第三方模块`matplotlib`
+
+在windows命令行中输入
+
+```python
+pip install matplotlib
+```
+
+使用matplotlib可以绘制出各种高大上的数据可视化效果，[点我看一些高大上的案例](https://matplotlib.org/gallery/index.html)   
+
+绘制直线、抛物线函数图像
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.arange(10)
+y1 = 2 * x
+y2 = 5 * x 
+y3 = x ** 2
+plt.plot(x,y1,'r',x,y2,'g',x,y3,'b')
+plt.show()
+```
+
+绘制三角函数图像
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.arange(0,5,0.01)
+y1 = np.sin(x)
+y2 = np.cos(x)
+plt.plot(x,y1,'r',x,y2,'g')
+plt.show()
+```
+
+
+
+### 中文分词第三方模块`jieba`
+
+在windows命令行中输入
 
 ```python
 pip install jieba
@@ -355,23 +396,71 @@ print(a)
 
 
 
+### 情感分析与文本处理第三方模块`snownlp`
 
+在windows命令行中输入
+
+```python
+pip install snownlp
+```
+
+直接调用`snownlp`模块进行文本分析
+
+```python
+import snownlp
+s = snownlp.SnowNLP('这个东西真心很赞')
+print('中文分词',s.words)
+print('情感分析',s.sentiments)
+print('转成拼音',s.pinyin)
+print('词频',s.tf)
+print('提取三个关键词',s.keywords(3))
+```
 
 
 
 # 6、常见python开发工具概览
 
-## IDLE：安装自带的开发环境，像坟墓一样简洁
+进入windows命令行，一个命令安装几个常用的Python集成开发环境（IDE）
 
+```python
+pip install thonny jupyter spyder
+```
 
+## IDLE：安装自带，简洁易用，新手推荐
 
-## thonny：可以逐行运行调试的python工具，新手推荐
+![IDLE：交互式界面与脚本编辑界面](https://upload-images.jianshu.io/upload_images/13714448-e37a0661d61ba70e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## thonny：一步步运行调试，查看变量值，新手推荐
 
+![thonnytest1.gif](https://upload-images.jianshu.io/upload_images/13714448-fb6ef1bf4e622b2b.gif?imageMogr2/auto-orient/strip)
 
-## Anaconda：常用第三方模块全家桶，安装它等于安装了全宇宙
+## Anaconda：科学计算全家桶
 
+> 个人建议：新手不需要用Anaconda，需要什么库直接按照上述方法`pip install`即可，再学一下`pipenv`虚拟环境搭建，就可以了。
 
+Anaconda包括Conda包管理器、Python解释器以及一大堆安装好的科学计算工具包，比如：numpy、pandas等。因为包含了大量的科学计算包，Anaconda 的下载文件比较大（约 600 MB），如果只需要某些包，或者需要存储空间，可以使用占用空间较小的Miniconda（仅包含包管理器conda和 Python解释器）。
+
+Anaconda可以从清华大学开源软件镜像站下载，最新版本下载链接如下：
+
+[Anaconda3-5.3.1-windows64位](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.3.1-Windows-x86_64.exe)  
+
+[Anaconda3-5.3.1-windows32位](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.3.1-Windows-x86.exe)  
+
+[Anaconda3-5.3.1-MacOSX-x86_64.sh](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.3.1-MacOSX-x86_64.sh)  
+
+[Anaconda3-5.3.1-MacOSX-x86_64.pkg](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.3.1-MacOSX-x86_64.pkg)  
+
+![Anaconda内置的一部分第三方库](https://upload-images.jianshu.io/upload_images/13714448-b319b5ac6565710b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+Miniconda 是一个 Anaconda 的轻量级替代，默认只包含了 python 和 conda，但是可以通过 pip 和 conda 来安装所需要的包。
+
+[Miniconda3-latest-Windows-64位](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Windows-x86_64.exe)   
+
+[Miniconda3-latest-Windows-32位](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Windows-x86.exe)   
+
+[Miniconda3-latest-MacOSX-x86_64.sh](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-MacOSX-x86_64.sh)   
+
+[Miniconda3-latest-MacOSX-x86_64.pkg](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg)   
 
 ## Spyder：和Matlab超像的python编辑工具
 
