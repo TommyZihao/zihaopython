@@ -16,13 +16,13 @@
 
 # 前言
 
-回忆我当初python零基础入门的时候，最讨厌做的事情就是搭建各种开发环境、配置各种环境变量、开发工具和IDE，切换各种python版本和解释器。虽然现在看来这些东西都很简单（就是本文所讲内容），但是对新手来说，遇到任何一个小bug都会让他浪费大量时间精力去解决，甚至直接劝退弃学。我之前见到一个同学，学了半年python，连交互式界面和脚本编辑界面都搞不清楚。于是我就想做一个教程，一站式解决python的所有安装配置和开发工具问题，之后就可以专注于享受编程本身，享受python庞大的开源社区和计算生态。
+回忆我当初python零基础入门的时候，最讨厌做的事情就是手忙脚乱地搭建各种开发环境、配置各种环境变量、国内镜像、开发工具和IDE，切换各种python版本和解释器。虽然现在看来这些东西都很简单（就是本文所讲内容），但是对新手来说，遇到任何一个小bug都会让他浪费大量时间精力去解决，甚至直接劝退弃学。我之前见到一个同学，卡在第一步安装python，学了半年，连交互式界面和脚本编辑界面都搞不清楚。于是我就想做一个教程，一站式解决python的所有安装配置和开发工具问题，之后就可以专注于享受代码本身和解决问题，享受python庞大的开源社区和计算生态。
 
 本文是很多程序员多年的经验炼出的真金，只需按照步骤一步步来就行。
 
-大家可以在知乎专栏”人工智能小技巧“上看到这篇博客，也可以在开源社区github上看到我们整个python系列课程的所有博客文档和代码。
+大家可以在知乎专栏”人工智能小技巧“上看到这篇博客，也可以在开源社区[github:跟子豪兄趣学python系列课程](https://github.com/TommyZihao/zihaopython)    上看到我们整个python系列课程的所有视频链接、博客文档和源代码。
 
-# 1、安装python3（3.7.2最新版本）
+# 1、安装python3（截至2019年3月的最新版本3.7.2）
 
 ## 下载方式一：百度网盘链接（推荐）
 
@@ -56,7 +56,7 @@
 
 ## 打开IDLE
 
-开始菜单里搜python，即可看到IDLE，IDLE是python安装自带的集成开发工具，对于新手来说绝对够用，我们后续的课程也全都可以用IDLE实现。
+开始菜单里搜`python`或者`IDLE`，即可看到IDLE，IDLE是python安装自带的集成开发工具，对于新手来说绝对够用，我们后续的课程也全都可以用IDLE实现。
 
 IDLE最大的优点就是：安装自带、打开方便、像坟墓一样简洁。
 
@@ -175,12 +175,11 @@ print('100以内的数判别完毕')
 > 在python的语法中不能出现中文的引号、括号、逗号、句号
 
 ```python
-Microsoft Windows [版本 6.1.7601]
-版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+Microsoft Windows [版本 10.0.17134.590]
+(c) 2018 Microsoft Corporation。保留所有权利。
 
-C:\Users\Zhouyu>python
-Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 23:09:28) [MSC v.1916 64 bit
-(AMD64)] on win32
+C:\Users\张子豪>python
+Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 23:09:28) [MSC v.1916 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 2**4
 16
@@ -192,24 +191,24 @@ Type "help", "copyright", "credits" or "license" for more information.
 1.5091743119266054
 >>> 23%10
 3
->>> a = 23 % 10
+>>> a = 654%10
 >>> a
-3
+4
 >>> b = 8//3
 >>> b
 2
 >>> print(a)
-3
+4
 >>> print(a,b,a+b,a-b)
-3 2 5 1
+4 2 6 2
 >>> print('hello world!')
 hello world!
->>> print('欢迎来到python的世界！')
-欢迎来到python的世界！
 >>> exit()
 
-C:\Users\Zhouyu>
+C:\Users\张子豪>
 ```
+
+
 
 ## 命令行快捷键
 
@@ -223,13 +222,13 @@ C:\Users\Zhouyu>
 
 ## 在windows命令行中运行.py格式的python脚本文件
 
-在windows命令行切换到.py文件所在的目录
+在windows命令行中，使用`cd+路径`的命令切换到.py文件所在的目录
 
-比如，我刚刚用IDLE写的判定100以内奇偶数的程序，放在`C:\Users\Zhouyu\AppData\Local\Programs\Python\Python37`目录下，我就需要在windows命令行界面中用cd命令切换到这个目录
+比如，我刚刚用IDLE写的判定100以内奇偶数的程序，放在`C:\Users\张子豪\AppData\Local\Programs\Python\Python37`目录下，我就需要在windows命令行界面中用`cd`命令切换到这个目录
 
-![切换到.py文件所在的目录](https://upload-images.jianshu.io/upload_images/13714448-d4b5beef5675e14b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+再用`python+空格+文件名`的方式运行.py脚本文件
 
-用`python+空格+文件名`的方式运行.py脚本文件
+![cmdtest.gif](https://upload-images.jianshu.io/upload_images/13714448-1a5b8fa706ca99d8.gif?imageMogr2/auto-orient/strip)
 
 ![在windows命令行中执行python脚本文件](https://upload-images.jianshu.io/upload_images/13714448-1c0876d9fdb420f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -249,17 +248,18 @@ python为什么这么火？
 
 一些知名的python第三方模块，我们这个python系列课程有大量的篇幅介绍这些第三方库的使用。
 
-| 领域                     | python第三方模块                                  |
-| ------------------------ | ------------------------------------------------- |
-| 人工智能与机器学习       | Tensorflow、Pytorch、Sklearn、MXNet、aip          |
-| 数据分析与科学计算       | Numpy、Pandas、SciPy                              |
-| 数据可视化               | wordcloud、Matplotlib、Seaborn、Mayavi、pyecharts |
-| 图像处理                 | PIL、opencv                                       |
-| 文本处理                 | jieba、NLTK、snownlp、PyPDF2、python-docx         |
-| 网络爬虫与信息提取       | Requests、Scrapy、Beautiful Soup、pyquery         |
-| 云端Web开发              | Flask、Django、Pyramid                            |
-| 游戏、虚拟现实、艺术设计 | pygame、VR Zero、Vizard、Quads、ascii_art、MyQR   |
-| 微信、新浪微博开发接口   | WeRobot、weibopy                                  |
+| 领域                               | python第三方模块                                  |
+| ---------------------------------- | ------------------------------------------------- |
+| 人工智能与机器学习                 | Tensorflow、Pytorch、Sklearn、MXNet、aip          |
+| 数据分析与科学计算                 | Numpy、Pandas、SciPy                              |
+| 大数据可视化                       | wordcloud、Matplotlib、Seaborn、Mayavi、pyecharts |
+| 图像处理与机器视觉                 | PIL、opencv                                       |
+| 自然语言处理、文本处理             | jieba、NLTK、snownlp、PyPDF2、python-docx         |
+| 网络爬虫与信息提取                 | Requests、Scrapy、Beautiful Soup、pyquery         |
+| 云端Web开发                        | Flask、Django、Pyramid                            |
+| 游戏、虚拟现实、艺术设计、人机交互 | pygame、VR Zero、Vizard、Quads、ascii_art、MyQR   |
+| 微信、新浪微博开发接口             | WeRobot、weibopy、itchat                          |
+| 物联网与智能硬件                   | 树莓派、3D打印机、Arduino单片机、激光雕刻机等模块 |
 
 ## pip工具：用于下载第三方模块的包管理器
 
@@ -267,7 +267,7 @@ python为什么这么火？
 
 在windows命令行中输入`pip list`或者`pip install`，验证pip是否安装成功。
 
-> 注意，是在windows命令行中输入，而不是在python的交互式命令行中输入。
+> 注意，是在windows命令行中输入，而不是在python的交互式命令行中输入。pip工具在使用的时候要联网。
 
 显示pip安装成功的界面：
 
@@ -289,9 +289,21 @@ pip install numpy
 
 为了解决这个问题，我们可以从国内已经下载好的人手里下载，比如，从清华大学开源软件镜像站下载。
 
-# 5、给pip工具更换国内镜像源：让下载达到火箭速度
+# 5、给pip工具更换国内镜像源：让下载速度快到飞起
 
-## 临时使用-i参数从国内镜像下载第三方模块
+## 方法一：一劳永逸配置pip源（推荐）
+
+只需在windows命令行中输入一行命令，即可永久设置pip下载源为国内源
+
+```python
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+> 注意：是 `https` 而不是 `http`，`simple` 不能少  
+
+
+
+## 方法二：临时使用-i参数从国内镜像下载第三方模块
 
 临时使用`-i`参数从清华大学开源镜像站下载numpy
 
@@ -299,12 +311,14 @@ pip install numpy
 pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
->注意，`simple` 不能少, 是 `https` 而不是 `http`
+>注意：是 `https` 而不是 `http`，`simple` 不能少  
 
 ![通过-i参数从清华大学开源软件镜像站下载第三方库](https://upload-images.jianshu.io/upload_images/13714448-8210ef5dbbb7fc5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 只需在之前的`pip install`后面加上`-i`参数即可指定不同的国内镜像源，下载速度一下子就飞起了。
 以下是一些国内知名的开源镜像站，它们的工作就是每隔几分钟就把国外的pypi社区网站上的更新内容下载下来存在国内的服务器上，就像照镜子一样百分百复制，便于国内的用户高速下载。
+
+## 国内几个知名的python开源镜像站
 
 | 国内python开源镜像站 | 网址                                      |
 | -------------------- | ----------------------------------------- |
@@ -317,27 +331,17 @@ pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ![在IDLE和windows命令行中验证numpy安装成功](https://upload-images.jianshu.io/upload_images/13714448-0a5d5a32fbfd0f90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-再安装snownlp库
+再安装pandas库
 
 ```python
-pip install snownlp -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-`
 
-## 一劳永逸配置pip源
 
-只需在windows命令行中输入一行命令，即可永久设置pip下载源为国内源
 
-```python
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
 
-> 注意，`simple` 不能少, 是 `https` 而不是 `http
->
-> 
-
-## 测试几个第三方模块
+## 用pip安装测试几个第三方模块
 
 ### 数据可视化第三方模块`matplotlib`
 
@@ -354,7 +358,7 @@ pip install matplotlib
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
-x = np.arange(10)
+x = np.arange(0,10,0.01)
 y1 = 2 * x
 y2 = 5 * x 
 y3 = x ** 2
@@ -374,7 +378,7 @@ plt.plot(x,y1,'r',x,y2,'g')
 plt.show()
 ```
 
-
+![用matplotlib绘制函数图像](https://upload-images.jianshu.io/upload_images/13714448-4b2fc745f9e5f03d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 中文分词第三方模块`jieba`
 
@@ -430,7 +434,7 @@ pip install thonny jupyter spyder
 
 ![IDLE：交互式界面与脚本编辑界面](https://upload-images.jianshu.io/upload_images/13714448-e37a0661d61ba70e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## thonny：一步步运行调试，查看变量值，新手推荐
+## thonny：一步步运行调试，查看变量值变化，新手推荐
 
 ![thonnytest1.gif](https://upload-images.jianshu.io/upload_images/13714448-fb6ef1bf4e622b2b.gif?imageMogr2/auto-orient/strip)
 
@@ -472,4 +476,10 @@ Miniconda 是一个 Anaconda 的轻量级替代，默认只包含了 python 和 
 
 ## PyCharm：专业程序员，大型项目适用
 
- 
+pycharm分为免费的社区版和付费的专业版，对于初学者而言，免费的社区版绝对够用。
+
+pycharm的界面冷若冰霜，代码纷繁复杂，窗口星罗棋布，环境浩如烟海，文档汗牛充栋，还都是英文，适合开发大型项目的专业程序员使用。
+
+但是，pycharm提供了语法纠错、代码高亮、文件树浏览、断点调试等诸多专业功能。
+
+![pycharm界面](https://upload-images.jianshu.io/upload_images/13714448-d08f1c4b83b8c22f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
