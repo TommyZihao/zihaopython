@@ -1,5 +1,7 @@
 # 跟子豪兄趣学Python系列课程
 
+Bilibili视频：[同济子豪兄](https://space.bilibili.com/1900783/#/)     
+
 课件、视频、源代码：https://github.com/TommyZihao/zihaopython
 通俗易懂有趣，抛弃枯燥语法。迅速学以致用，实战智能数据。享受开源生态，弹指改变世界！
 
