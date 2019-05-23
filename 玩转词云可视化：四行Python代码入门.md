@@ -2,9 +2,9 @@
 
 [TOC]
 
-# 本文概要
+# 本课概要
 
-从四行代码开始，一步步教你做出高大上的词云图片，可视化生动直观展示出枯燥文字背后的核心概念。进一步实现修改字体、字号、背景颜色、词云形状、勾勒边框、颜色渐变等高级玩法。
+从四行代码开始，一步步教你做出高大上的词云图片，可视化生动直观展示出枯燥文字背后的核心概念。进一步实现修改字体、字号、背景颜色、词云形状、勾勒边框、颜色渐变、分类填色、情感分析等高级玩法。
 
 学完本课之后，你可以将四大名著、古典诗词、时事新闻、法律法规、政府报告、小说诗歌等大段文本做成高大上的可视化词云，还可以将你的微信好友个性签名导出，看看你微信好友的“画风”是怎样的。
 
@@ -481,10 +481,10 @@ w.to_file('output9-contour.png')
 
 ![8号词云：哈姆雷特(勾勒轮廓线)](https://upload-images.jianshu.io/upload_images/13714448-4372015a5f588812.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 10号词云：《爱丽丝漫游仙境》词云（勾勒轮廓线）
+## 10号词云：《爱丽丝漫游仙境》词云（按模板填色）
 
 ```python
-# 10号词云：《爱丽丝漫游仙境》词云（勾勒轮廓线）
+# 10号词云：《爱丽丝漫游仙境》词云（按模板填色）
 # B站专栏：同济子豪兄 2019-5-23
 
 # 导入绘图库matplotlib和词云制作库wordcloud
@@ -840,6 +840,10 @@ w.to_file('output13-threekingdoms.png')
 ![chinamap.png](https://upload-images.jianshu.io/upload_images/13714448-1cf1651ab5697142.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![wujiaoxing.png](https://upload-images.jianshu.io/upload_images/13714448-289890b06087cacc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![alice_color.png](https://upload-images.jianshu.io/upload_images/13714448-bd01141967d1705b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![queen.jpg](https://upload-images.jianshu.io/upload_images/13714448-96ff5f41261ae470.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![communicate.png](https://upload-images.jianshu.io/upload_images/13714448-1d98aa21535c7336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
