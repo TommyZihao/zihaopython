@@ -10,9 +10,7 @@
 
 学完本课之后，你可以将四大名著、古典诗词、时事新闻、法律法规、政府报告、小说诗歌等大段文本做成高大上的可视化词云，还可以将你的微信好友个性签名导出，看看你微信好友的“画风”是怎样的。
 
-
-
-
+![三国演艺词云](https://upload-images.jianshu.io/upload_images/13714448-e6a1c4c8bfbf0471.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 作者：同济大学 子豪兄  2019-5-23
 
@@ -392,7 +390,6 @@ string = " ".join(txtlist)
 # 将string传入
 w.generate(string)
 w.to_file('output2.png')
-
 ```
 
 加scale参数为15的效果
@@ -410,8 +407,6 @@ w.to_file('output2.png')
 # 高级词云
 
 
-
-# 
 
 
 
@@ -473,10 +468,9 @@ plt.imshow(my_wordcloud)
 plt.axis("off")
 plt.show()
 print('程序结束')
-
 ```
 
-![微信好友个性签名词云](https://upload-images.jianshu.io/upload_images/13714448-fdf74ebab51240c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![微信好友个性签名词云](https://upload-images.jianshu.io/upload_images/13714448-f0c63277bed6e336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 # 情感分析词云
 
