@@ -1,6 +1,4 @@
-
-
-# 词云可视化
+# 玩转词云可视化：四行Python代码入门
 
 [TOC]
 
@@ -26,19 +24,19 @@ Bilibili视频教程：[同济子豪兄-子豪兄opencv-python教程](https://sp
 
 
 
-# 安装wordcloud
+# 安装本课程所需的所有第三方模块
 
-## 一行命令安装wordcloud
+## 一行命令安装（推荐，适用于99.999%的情况）
 
 打开命令行，输入下面这行命令，回车执行即可。
 
 ```powershell
-pip install numpy jieba pillow wordcloud -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install numpy matplotlib pillow wordcloud imageio jieba snownlp itchat -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+## 如果安装过程中报错（0.001%会发生）
 
-
-> 如果报错：Microsoft Visual C++ 14.0 is required.
+> 如果报错：`Microsoft Visual C++ 14.0 is required.`
 >
 > 解决方法：
 >
@@ -52,16 +50,17 @@ pip install numpy jieba pillow wordcloud -i https://pypi.tuna.tsinghua.edu.cn/si
 
 
 
-
-
 # 四行Python代码上手词云制作
 
-## 1号词云：葛底斯堡演说黑色背景词云
+## 1号词云：葛底斯堡演说黑色背景词云（4行代码上手）
 
 ```python
 import wordcloud
+
 w = wordcloud.WordCloud()
+
 w.generate('and that government of the people, by the people, for the people, shall not perish from the earth.')
+
 w.to_file('output.png')
 ```
 
@@ -104,7 +103,7 @@ wordcloud库会非常智能地按空格进行分词及词频统计，出现次�
 
 # 美化词云
 
-## 2号词云：面朝大海，春暖花开
+## 2号词云：面朝大海，春暖花开（配置词云参数）
 
 增加宽、高、字体、背景颜色等参数
 
@@ -114,6 +113,7 @@ wordcloud库会非常智能地按空格进行分词及词频统计，出现次�
 
 import wordcloud
 
+# 构建词云对象w，设置词云图片宽、高、字体、背景颜色等参数
 w = wordcloud.WordCloud(width=1000,height=700,background_color='white',font_path='msyh.ttc')
 
 w.generate('从明天起，做一个幸福的人。喂马、劈柴，周游世界。从明天起，关心粮食和蔬菜。我有一所房子，面朝大海，春暖花开')
@@ -131,6 +131,7 @@ w.to_file('output.png')
 
 import wordcloud
 
+# 构建词云对象w，设置词云图片宽、高、字体、背景颜色等参数
 w = wordcloud.WordCloud(width=1000,
                         height=700,
                         background_color='white',
@@ -168,15 +169,15 @@ w.to_file('output.png')
 
 - mask 指定词云形状图片，默认为矩形
 
-  通过以下代码读入外部词云形状图片（需要先`pip install scipy`安装scipy）
+  通过以下代码读入外部词云形状图片（需要先`pip install imageio`安装imageio）
 
 ```python
-from scipy.misc import imread
-mk = imread("picture.png")
+import imageio
+mk = imageio.imread("picture.png")
 w = wordcloud.WordCloud(mask=mk)
 ```
 
-也就是说，我们可以这样来构建词云对象w，其中的参数均为常用参数的默认值：
+也就是说，我们可以这样来构建词云对象w，其中的参数均为常用参数的默认值，供我们自定义：
 
 ```python
 w = wordcloud.WordCloud(      
@@ -211,13 +212,16 @@ import wordcloud
 f = open('关于实施乡村振兴战略的意见.txt',encoding='utf-8')
 txt = f.read()
 
+# 构建词云对象w，设置词云图片宽、高、字体、背景颜色等参数
 w = wordcloud.WordCloud(width=1000,
                         height=700,
                         background_color='white',
                         font_path='msyh.ttc')
 
+# 将txt变量传入w的generate()方法，给词云输入文字
 w.generate(txt)
 
+# 将词云图片导出到当前文件夹
 w.to_file('output.png')
 
 ```
@@ -248,7 +252,7 @@ w.to_file('output.png')
 
 以上代码将一句`完整的中文字符串`转换成了`以空格分隔的词组成的字符串`，而后者是绘制词云时`generate()`方法要求传入的参数。
 
-## 4号词云：同济大学介绍词云
+## 4号词云：同济大学介绍词云（中文分词）
 
 ```python
 # 4号词云：同济大学介绍词云
@@ -258,18 +262,20 @@ w.to_file('output.png')
 import jieba
 import wordcloud
 # 构建并配置词云对象w
-w = wordcloud.WordCloud(width=1000,\
-                        height=700,\
-                        background_color='white',\
+w = wordcloud.WordCloud(width=1000,
+                        height=700,
+                        background_color='white',
                         font_path='msyh.ttc')
 
-# 对原始文本进行中文分词，得到string
+# 调用jieba的lcut()方法对原始文本进行中文分词，得到string
 txt = '同济大学（Tongji University），简称“同济”，是中华人民共和国教育部直属，由教育部、国家海洋局和上海市共建的全国重点大学，历史悠久、声誉卓著，是国家“双一流”、“211工程”、“985工程”重点建设高校，也是收生标准最严格的中国大学之一'
 txtlist = jieba.lcut(txt)
 string = " ".join(txtlist)
 
-# 将string传入
+# 将string变量传入w的generate()方法，给词云输入文字
 w.generate(string)
+
+# 将词云图片导出到当前文件夹
 w.to_file('output.png')
 ```
 
@@ -288,9 +294,9 @@ import jieba
 import wordcloud
 
 # 构建并配置词云对象w
-w = wordcloud.WordCloud(width=1000,\
-                        height=700,\
-                        background_color='white',\
+w = wordcloud.WordCloud(width=1000,
+                        height=700,
+                        background_color='white',
                         font_path='msyh.ttc')
 
 # 对来自外部文件的文本进行中文分词，得到string
@@ -299,8 +305,10 @@ txt = f.read()
 txtlist = jieba.lcut(txt)
 string = " ".join(txtlist)
 
-# 将string传入
+# 将string变量传入w的generate()方法，给词云输入文字
 w.generate(string)
+
+# 将词云图片导出到当前文件夹
 w.to_file('output.png')
 ```
 
@@ -312,13 +320,11 @@ w.to_file('output.png')
 
 # 高级词云：绘制指定形状的词云
 
-参数mask 指定词云形状图片，默认为矩形
-
-通过以下代码读入外部词云形状图片（需要先`pip install scipy`安装scipy）
+通过以下代码读入外部词云形状图片（需要先`pip install imageio`安装imageio）
 
 ```python
-from scipy.misc import imread
-mk = imread("picture.png")
+import imageio
+mk = imageio.imread("picture.png")
 w = wordcloud.WordCloud(mask=mk)
 ```
 
@@ -332,9 +338,9 @@ w = wordcloud.WordCloud(mask=mk)
 import jieba
 import wordcloud
 
-# 导入scipy库misc字库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
-from scipy.misc import imread
-mk = imread("wujiaoxing.png")
+# 导入imageio库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
+import imageio
+mk = imageio.imread("wujiaoxing.png")
 w = wordcloud.WordCloud(mask=mk)
 
 # 构建并配置词云对象w，注意要加scale参数，提高清晰度
@@ -351,9 +357,11 @@ txt = f.read()
 txtlist = jieba.lcut(txt)
 string = " ".join(txtlist)
 
-# 将string传入
+# 将string变量传入w的generate()方法，给词云输入文字
 w.generate(string)
-w.to_file('output2.png')
+
+# 将词云图片导出到当前文件夹
+w.to_file('output.png')
 ```
 
 ![6号词云：乡村振兴战略中央文件(五角星)](https://upload-images.jianshu.io/upload_images/13714448-5e0428a99a988454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -368,9 +376,9 @@ w.to_file('output2.png')
 import jieba
 import wordcloud
 
-# 导入scipy库misc字库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
-from scipy.misc import imread
-mk = imread("chinamap.png")
+# 导入imageio库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
+import imageio
+mk = imageio.imread("chinamap.png")
 w = wordcloud.WordCloud(mask=mk)
 
 # 构建并配置词云对象w，注意要加scale参数，提高清晰度
@@ -387,9 +395,11 @@ txt = f.read()
 txtlist = jieba.lcut(txt)
 string = " ".join(txtlist)
 
-# 将string传入
+# 将string变量传入w的generate()方法，给词云输入文字
 w.generate(string)
-w.to_file('output2.png')
+
+# 将词云图片导出到当前文件夹
+w.to_file('output.png')
 ```
 
 加scale参数为15的效果
@@ -400,22 +410,87 @@ w.to_file('output2.png')
 
   ![中国地图词云](https://upload-images.jianshu.io/upload_images/13714448-002e6bc0085c0bd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
- 
-
-
-
-# 高级词云
-
-
-
-
-
-
-
-# 高级词云：微信好友个性签名词云
+## 8号词云：三国演艺词云（stopwords参数去除词）
 
 ```python
-# 绘制微信好友个性签名词云图
+# 8号词云：三国演艺词云（去掉曹操和孔明）
+# B站专栏：同济子豪兄 2019-5-23
+
+# 导入词云制作库wordcloud和中文分词库jieba
+import jieba
+import wordcloud
+
+# 导入imageio库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
+import imageio
+mk = imageio.imread("chinamap.png")
+w = wordcloud.WordCloud(mask=mk)
+
+# 构建并配置词云对象w，注意要加stopwords集合参数，将不想展示在词云中的词放在stopwords集合里
+w = wordcloud.WordCloud(width=1000,
+                        height=700,
+                        background_color='white',
+                        font_path='msyh.ttc',
+                        mask=mk,
+                        scale=15,
+                        stopwords={'曹操','孔明'})
+
+# 对来自外部文件的文本进行中文分词，得到string
+f = open('threekingdoms.txt',encoding='utf-8')
+txt = f.read()
+txtlist = jieba.lcut(txt)
+string = " ".join(txtlist)
+
+# 将string变量传入w的generate()方法，给词云输入文字
+w.generate(string)
+
+# 将词云图片导出到当前文件夹
+w.to_file('output21.png')
+
+```
+
+
+
+![三国演艺词云](https://upload-images.jianshu.io/upload_images/13714448-9644b496af2d874b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 9号词云：哈姆雷特（勾勒轮廓线）
+
+```python
+# 9号词云：哈姆雷特（勾勒轮廓线）
+# B站专栏：同济子豪兄 2019-5-23
+
+# 导入词云制作库wordcloud
+import wordcloud
+
+# 将外部文件包含的文本保存在text变量中
+string = open('hamlet.txt').read()
+
+# 导入imageio库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
+import imageio
+mk = imageio.imread("alice.png")
+
+# 构建词云对象w，注意增加参数contour_width和contour_color设置轮廓宽度和颜色
+w = wordcloud.WordCloud(background_color="white",
+                        mask=mk,
+                        contour_width=1,
+                        contour_color='steelblue')
+
+# # 将string变量传入w的generate()方法，给词云输入文字
+w.generate(string)
+
+# 将词云图片导出到当前文件夹
+w.to_file('aliceoutput.png')
+```
+
+![8号词云：哈姆雷特(勾勒轮廓线)](https://upload-images.jianshu.io/upload_images/13714448-4372015a5f588812.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 进阶词云：尽享数据驱动与开源社区
+
+
+
+## 9号词云：绘制你的微信好友个性签名词云
+
+```python
+# 9号词云：绘制你的微信好友个性签名词云
 # B站专栏：同济子豪兄 2019-05-23
 
 # 导入微信库ichat，中文分词库jieba
@@ -442,9 +517,10 @@ text = " ".join(tList)
 wordlist_jieba = jieba.lcut(text, cut_all=True)
 wl_space_split = " ".join(wordlist_jieba)
 
-# 导入scipy库misc字库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
-from scipy.misc import imread
-mk = imread("chinamap.png")
+# 导入imageio库中的imread函数，并用这个函数读取本地图片，作为词云形状图片
+import imageio
+mk = imageio.imread("chinamap.png")
+
 # 导入词云制作库wordcloud
 import wordcloud
 
@@ -455,7 +531,7 @@ my_wordcloud = wordcloud.WordCloud(background_color='white',
                                    font_path='msyh.ttc',
                                    max_words=2000,
                                    mask=mk,
-                                   scale=150)
+                                   scale=20)
 my_wordcloud.generate(wl_space_split)
 
 nickname = friends[0]['NickName']
@@ -472,6 +548,8 @@ print('程序结束')
 
 ![微信好友个性签名词云](https://upload-images.jianshu.io/upload_images/13714448-f0c63277bed6e336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+
 # 情感分析词云
 
 
@@ -482,9 +560,7 @@ print('程序结束')
 
 ## wordcloud库
 
-
-
-[Github主页](<https://github.com/amueller/word_cloud>)<br>
+[wordcloud的Github主页](<https://github.com/amueller/word_cloud>)<br>
 
 ## 词云绘制的原理
 
@@ -504,12 +580,12 @@ print('程序结束')
 
 # 文本及图片素材
 
-《哈姆雷特（英文版）》全文:<https://python123.io/resources/pye/hamlet.txt>
+- 《哈姆雷特（英文版）》全文:<https://python123.io/resources/pye/hamlet.txt><br>
 
-《三国演义》全文:<https://python123.io/resources/pye/threekingdoms.txt>
+- 《三国演义》全文:<https://python123.io/resources/pye/threekingdoms.txt><br>
 
-《十九大报告》全文:<https://python123.io/resources/pye/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89.txt>
-《关于实施乡村振兴战略的意见》全文:<https://python123.io/resources/pye/%E5%85%B3%E4%BA%8E%E5%AE%9E%E6%96%BD%E4%B9%A1%E6%9D%91%E6%8C%AF%E5%85%B4%E6%88%98%E7%95%A5%E7%9A%84%E6%84%8F%E8%A7%81.txt>
+- 《新时代中国特色社会主义》全文:<https://python123.io/resources/pye/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89.txt><br>
+- 《关于实施乡村振兴战略的意见》全文:<https://python123.io/resources/pye/%E5%85%B3%E4%BA%8E%E5%AE%9E%E6%96%BD%E4%B9%A1%E6%9D%91%E6%8C%AF%E5%85%B4%E6%88%98%E7%95%A5%E7%9A%84%E6%84%8F%E8%A7%81.txt><br>
 
 
 
@@ -533,11 +609,11 @@ print('程序结束')
 
 ![womanshape3.png](https://upload-images.jianshu.io/upload_images/13714448-8a4e6c43165ed7e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-# 参考资料
+# 参考资料与扩展阅读
 
 [翻译：WorldCloud()官方使用说明 & matplotlib.pyplot.imshow()官方使用说明](<https://blog.csdn.net/htuhxf/article/details/80471442>)<br>
 
 [Python语言程序设计MOOC 北京理工大学 嵩天](<https://www.icourse163.org/learn/BIT-268001#/learn/announce>)<br>
 
-
+[python123：你不知道的词云](<https://python123.io/tutorials/word_cloud>)<br>
 
