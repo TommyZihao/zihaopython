@@ -68,7 +68,7 @@ pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 运行Jupyter notebook
 
-打开命令行，输入`jupter notebook`，回车。稍等片刻即可跳出浏览器网页。
+打开命令行，输入`jupyter notebook`，回车。稍等片刻即可跳出浏览器网页。
 
 ![jupyter notebook打开界面](https://upload-images.jianshu.io/upload_images/13714448-803f32720cf0278e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
